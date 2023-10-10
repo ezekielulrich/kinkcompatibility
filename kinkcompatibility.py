@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 '''
 FEATURES TO ADD:
@@ -28,23 +29,34 @@ pairs = {
     'Non-monogamist' : 'Non-monogamist'
 }
 
+entry1 = ""
+entry2 = ""
 '''
 Calculates how compatible each person 
 is for each kink by multiplying percents
 for paired kinks and dividing by total
 '''
 def calculateCompatibility(playmates):
-    compatible = 0
-    n = 0
+    print("Called")
+    compatibility = 0
+    n = 1
 
     for kink in playmates[0]:
+        print("More than once")
         if kink in pairs:
             n += 1
-            compatible += playmates[0][kink] * playmates[1][pairs[kink]]
+            compatibility += playmates[0][kink] * playmates[1][pairs[kink]]
 
-    compatible *= 1/n
+    compatibility *= 1/n
 
-    return compatible
+    return compatibility
+
+def enter(entry1, entry2):
+    playmate1 = entry1.get()
+    playmate2 = entry2.get()
+
+    result = calculateCompatibility([playmate1, playmate2])
+    messagebox.showinfo("Compatibility Result", result)
 
 '''
 Extracts dictionary of kinks and their percentages
@@ -76,66 +88,36 @@ def stripLink(url):
     return results
 '''
 def main():
-    p1 = '''
-== Results from bdsmtest.org == 
-100% Ageplayer 
-0% Brat 
-100% Exhibitionist 
-100% Voyeur 
-100% Switch 
-0% Slave 
-100% Sadist 
-0% Rope bunny 
-100% Rigger 
-0% Primal (Prey) 
-100% Primal (Hunter) 
-100% Owner 
-100% Non-monogamist 
-100% Master/Mistress 
-0% Masochist 
-0% Boy/Girl 
-0% Degradee 
-100% Brat tamer 
-100% Experimentalist 
-0% Pet 
-100% Degrader 
-100% Daddy/Mommy 
-0% Submissive 
-100% Dominant 
-100% Vanilla 
-    '''
 
-    p2 = '''
-== Results from bdsmtest.org == 
-100% Ageplayer 
-100% Brat 
-100% Exhibitionist 
-100% Voyeur 
-100% Switch 
-100% Slave 
-0% Sadist 
-100% Rope bunny 
-0% Rigger 
-100% Primal (Prey) 
-0% Primal (Hunter) 
-0% Owner 
-100% Non-monogamist 
-0% Master/Mistress 
-100% Masochist 
-100% Boy/Girl 
-100% Degradee 
-0% Brat tamer 
-100% Experimentalist 
-100% Pet 
-0% Degrader 
-0% Daddy/Mommy 
-100% Submissive 
-0% Dominant 
-100% Vanilla 
-    '''
+    # main window
+    root = tk.Tk()
+    root.title("Kink Compatibility")
 
-    ar = [stripText(p1), stripText(p2)]
-    print(calculateCompatibility(ar))
+    window_width = int(root.winfo_screenwidth() * 0.5)
+    window_height = int(root.winfo_screenheight() * 0.5)
+    root.geometry(f"{window_width}x{window_height}")
+
+    root.configure(bg="black") 
+
+    # Create entry fields
+    label1 = tk.Label(root, text="First results:")
+    entry1 = tk.Entry(root)
+
+    label2 = tk.Label(root, text="Second results")
+    entry2 = tk.Entry(root)
+
+    label1.grid(row=0, column=0, padx=5, pady=5, sticky="e")
+    entry1.grid(row=0, column=1, padx=5, pady=5, sticky="w")
+
+    label2.grid(row=1, column=0, padx=5, pady=5, sticky="e")
+    entry2.grid(row=1, column=1, padx=5, pady=5, sticky="w")
+
+    # Create a button to calculate compatibility
+    calculate_button = tk.Button(root, text="Calculate", command=lambda : enter(entry1, entry2))
+    calculate_button.grid(row=2, columnspan=2, pady=10)
+
+    # Start the main event loop
+    root.mainloop()
 
 if __name__ == "__main__":
     main()
