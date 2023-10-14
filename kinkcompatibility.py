@@ -30,7 +30,7 @@ pairs = {
 intro = '''
 Welcome to the kink compatibility calculator!
 To begin, please paste the bdsmtest.org results
-of at least two people below. \n
+of at least two people in the text box.
 '''
 
 '''
@@ -38,6 +38,18 @@ Calculates how compatible each person
 is for each kink by multiplying percents
 for paired kinks and dividing by total
 '''
+
+def show_number(number):
+    print("You compatibility score is", number, "%")
+
+    popup = tk.Tk()
+    popup.title("Number Display")
+
+    label = tk.Label(popup, text=f"You are {number} % compatible!", font=("Arial", 12))
+    label.pack(padx=10, pady=10)
+
+    popup.mainloop()
+
 def calculateCompatibility(playmates):
     compatibility = 0
     n = len(pairs)
@@ -100,10 +112,10 @@ def main():
 
         if response == "c":
             if num > 1:
-                print("You compatibility score is", round(100 * calculateCompatibility(playmates), 2), "%")
+                show_number(round(100 * calculateCompatibility(playmates), 2))
             else:
                 print("You need at least two people to calculate compatibility")
-                response = ""
+                response = "try your left hand"
         elif response == "q" or response == None:
             print("Thanks for playing! ;)")
             break
