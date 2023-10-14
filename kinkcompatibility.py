@@ -4,6 +4,8 @@ Calculate compatibility from link or from pasted results
 UI
 Shows most compatible kinks
 '''
+import tkinter as tk
+from tkinter.simpledialog import askstring
 
 pairs = {
     'Rigger' : 'Rope bunny',
@@ -24,6 +26,12 @@ pairs = {
     'Ageplayer' : 'Ageplayer',
     'Non-monogamist' : 'Non-monogamist'
 }
+
+intro = '''
+Welcome to the kink compatibility calculator!
+To begin, please paste the bdsmtest.org results
+of at least two people below. \n
+'''
 
 '''
 Calculates how compatible each person 
@@ -76,33 +84,39 @@ def stripLink(url):
 '''
 
 def main():
-    p1 = '''
-== Results from bdsmtest.org == 
-100% Switch 
-100% Rigger 
-100% Sadist 
-100% Rope bunny 
-81% Masochist 
-70% Exhibitionist 
-67% Voyeur 
-61% Dominant 
-61% Submissive 
-52% Vanilla 
-52% Experimentalist 
-43% Brat tamer 
-43% Daddy/Mommy 
-31% Primal (Prey) 
-5% Primal (Hunter) 
-4% Brat 
-1% Master/Mistress 
-0% Ageplayer 
-0% Slave 
-0% Degradee 
-0% Boy/Girl 
-0% Degrader 
-0% Pet 
-0% Owner 
-0% Non-monogamist 
-'''
+
+    num = 0
+    response = ""
+    playmates = []
+
+    print(intro)
+
+    root = tk.Tk()
+    root.withdraw() 
+
+    while response != "c" and response != "q":
+
+        response = askstring("Input", "Paste results here.\n")
+
+        if response == "c":
+            if num > 1:
+                print("You compatibility score is", round(100 * calculateCompatibility(playmates), 2), "%")
+            else:
+                print("You need at least two people to calculate compatibility")
+                response = ""
+        elif response == "q" or response == None:
+            print("Thanks for playing! ;)")
+            break
+        else: 
+            try:
+                playmates.append(stripText(response))
+                num += 1
+            except:
+                print("That's not a valid response, please try again")
+
+        
+
+    
+        
 if __name__ == "__main__":
     main()
