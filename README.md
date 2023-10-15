@@ -55,12 +55,3 @@ The program uses the following BDSM kinks pairs for compatibility evaluation:
 ## How to Run
 - Ensure you have Python installed on your system.
 - Run the script using a Python interpreter.
-
-## Contributors
-- [Your Name]
-
-**Disclaimer**: This program is for entertainment purposes only and should not be used as a substitute for open communication and mutual consent between individuals involved in BDSM activities.
-
----
-
-*Note: Remember to replace "[Your Name]" in the "Contributors" section with actual contributors' names.*
