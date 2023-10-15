@@ -39,17 +39,6 @@ is for each kink by multiplying percents
 for paired kinks and dividing by total
 '''
 
-def show_number(number):
-    print("You compatibility score is", number, "%")
-
-    popup = tk.Tk()
-    popup.title("Number Display")
-
-    label = tk.Label(popup, text=f"You are {number} % compatible!", font=("Arial", 12))
-    label.pack(padx=10, pady=10)
-
-    popup.mainloop()
-
 def calculateCompatibility(playmates):
     compatibility = 0
     n = len(pairs)
@@ -108,11 +97,11 @@ def main():
 
     while response != "c" and response != "q":
 
-        response = askstring("Input", "Paste results here.\n")
+        response = askstring("Input", "Paste results here, or enter c to calculate.\n")
 
         if response == "c":
             if num > 1:
-                show_number(round(100 * calculateCompatibility(playmates), 2))
+                print(f"You are {round(100 * calculateCompatibility(playmates), 2)} % compatible!")
             else:
                 print("You need at least two people to calculate compatibility")
                 response = "try your left hand"
@@ -123,12 +112,9 @@ def main():
             try:
                 playmates.append(stripText(response))
                 num += 1
+                print("Successfully appended")
             except:
                 print("That's not a valid response, please try again")
-
-        
-
-    
         
 if __name__ == "__main__":
     main()
