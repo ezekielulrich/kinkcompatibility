@@ -1,3 +1,11 @@
+/*
+ * FEATURES TO ADD:
+ * Data visualization:
+ * - Plot radar chart
+ * - Most compatible kinks
+ * Ability to scrape from links
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
