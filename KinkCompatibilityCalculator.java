@@ -6,14 +6,32 @@
  * Ability to scrape from links
  */
 
+// For the main program
+import java.util.ArrayList;
+import java.util.HashMap;
+
+// For the GUI
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.util.ArrayList;
-import java.util.HashMap;
+
+// For creating the radar chart
+// I don't want to make people install
+// additional file, so perhaps I'll 
+// do it manually instead
+/*
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
+*/
+
 
 public class KinkCompatibilityCalculator {
     private static final HashMap<String, String> pairs = new HashMap<>();
