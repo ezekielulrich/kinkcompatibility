@@ -18,21 +18,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-// For creating the radar chart
-// I don't want to make people install
-// additional file, so perhaps I'll 
-// do it manually instead
-/*
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.category.CategoryDataset;
-import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
-*/
-
-
 public class KinkCompatibilityCalculator {
     private static final HashMap<String, String> pairs = new HashMap<>();
     private static int num = 0;
